@@ -42,3 +42,6 @@ Assumptions:
 1. If knock out barrier is touched, the product will be terminated at redemption date (assumed to be the knock out date for simplicity) with redemption amount 1.
 2. If knock out barrier is not touched and knock in barrier is touched, the product will be terminated at maturity with redemption amount 2.
 3. If knock out barrier is not touched and knock in barrier is not touched, the product will be terminated at maturity with redemption amount 3.
+
+Reference: QuantLib-Python: Heston Monte Carlo Valuation for Autocallable Memory Coupon Note by Mikael Katajamäki,
+available at http://mikejuniperhill.blogspot.com/2019/11/quantlib-python-heston-monte-carlo.html
