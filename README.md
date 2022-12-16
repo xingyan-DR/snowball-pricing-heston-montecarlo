@@ -2,6 +2,10 @@
 
 A snowball pricing model with Heston Monte Carlo simulation method, utilizing QuantLib.
 
+Some concept clarification:
+
+### Mathematical Representation of Heston model
+
 In Heston model, the stock price follows the below stochastic process where the volatility is also stochasitic:
 
 ```math
@@ -13,3 +17,28 @@ d\nu_t = -\lambda(\nu_t - \bar{\nu})dt + \eta\sqrt{\nu_t}dW_{2,t}
 ```math
 dW_{1,t}, dW_{2,t} = \rho dt
 ```
+Its discrete form formula will be used for model calibration and simulation, for details please refer to Euler and Milstein Discretization by F.D. Rouah.
+
+### Snowball
+"Snowball" covered by this model is one of the OTC equity derivatives with exotic structure. Its payoff, or redemption amount, is lineked to an index.
+
+#### Knock out
+Knock out barrier is usually higher than the initial index level and it influence both the redemption date and redemption amount.
+
+Assumptions:
+1. Knock out observation dates are specified.
+2. Observation target is the closing price of each observation day.
+3. Knock out barrier are specified for each observation date.
+
+#### Knock in
+Knock in barrier is usually lower than the initial index level and it will only influence the redemption amount.
+
+Assumptions:
+1. Knock in observation dates are all trading days during the life of the product.
+2. Observation target is the closing price of each trading day.
+3. Knock in barrier remains the same during the life of the product.
+
+#### Scenarios
+1. If knock out barrier is touched, the product will be terminated at redemption date (assumed to be the knock out date for simplicity) with redemption amount 1.
+2. If knock out barrier is not touched and knock in barrier is touched, the product will be terminated at maturity with redemption amount 2.
+3. If knock out barrier is not touched and knock in barrier is not touched, the product will be terminated at maturity with redemption amount 3.
