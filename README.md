@@ -1,6 +1,6 @@
-# snowball-pricing-heston-montecarlo
+# Snowball Valuation Model with Heston Montecarlo Method
 
-A snowball pricing model with Heston Monte Carlo simulation method, utilizing QuantLib.
+A snowball valuation model with Heston Monte Carlo simulation method, utilizing Python QuantLib.
 
 Some concept clarification:
 
